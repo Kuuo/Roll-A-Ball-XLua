@@ -17,7 +17,7 @@ public class XLuaManager : MonoBehaviour
     {
         _env = new LuaEnv();
 
-        _env.DoString("require 'main'");
+        _env.DoString("require 'main'", "main");
     }
 
     private void InitUpdater()
