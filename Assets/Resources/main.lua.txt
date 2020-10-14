@@ -1,18 +1,18 @@
-﻿
+﻿UE = CS.UnityEngine
+GO = UE.GameObject
+
+require 'inputMod'
+require 'playerMod'
+
 local msg = "<b>Hello From Lua!</b>"
 CS.UnityEngine.Debug.Log(msg)
 
-local time = 0
-
 function update(dt, udt)
-    time = time + dt
-    
-    if time > 1 then
-        print(123)
-        time = 0
-    end
+    inputMod.update(dt, udt)
 end
 
 function fixedUpdate(dt, udt)
-    
+    h, v = inputMod.inputH, inputMod.inputV
+
+    playerMod.move(h, v)
 end

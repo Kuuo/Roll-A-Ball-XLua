@@ -1,0 +1,9 @@
+﻿inputMod = {
+    inputH = 0,
+    inputV = 0
+}
+
+function inputMod.update(dt, udt)
+    inputMod.inputH = CS.UnityEngine.Input.GetAxis("Horizontal")
+    inputMod.inputV = CS.UnityEngine.Input.GetAxis("Vertical")
+end

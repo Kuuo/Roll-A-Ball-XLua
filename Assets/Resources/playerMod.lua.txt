@@ -1,0 +1,20 @@
+﻿playerMod = {
+    player = {},
+    force = 8
+}
+
+function init()
+    local player = playerMod.player
+    
+    player.gameObject = GO.CreatePrimitive(UE.PrimitiveType.Sphere)
+    player.transform = player.gameObject.transform
+    
+    ---@type UnityEngine.Rigidbody
+    player.rb = player.gameObject:AddComponent(typeof(UE.Rigidbody))
+end
+
+function playerMod.move(h, v)
+    playerMod.player.rb:AddForce(UE.Vector3(h, 0, v) * playerMod.force)
+end
+
+init()
