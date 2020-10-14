@@ -108,7 +108,7 @@ namespace EmmyLua
 				connected = true;
 				SendData(socket);
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				TryLater();
 			}
@@ -193,7 +193,7 @@ namespace EmmyLua
 					var bytes = buf.GetBuffer();
 					socket.Send(bytes, 8, SocketFlags.None);
 				}
-				catch (Exception e)
+				catch (Exception)
 				{
 					TryLater();
 				}

@@ -1,0 +1,18 @@
+﻿
+local msg = "<b>Hello From Lua!</b>"
+CS.UnityEngine.Debug.Log(msg)
+
+local time = 0
+
+function update(dt, udt)
+    time = time + dt
+    
+    if time > 1 then
+        print(123)
+        time = 0
+    end
+end
+
+function fixedUpdate(dt, udt)
+    
+end
