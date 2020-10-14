@@ -1,15 +1,18 @@
 ﻿playerMod = {
-    player = {},
+    player = {
+        ---@type UnityEngine.GameObject
+        gameObject = nil,
+
+        ---@type UnityEngine.Rigidbody
+        rb = nil
+    },
     force = 8
 }
 
 function init()
     local player = playerMod.player
-    
+
     player.gameObject = GO.CreatePrimitive(UE.PrimitiveType.Sphere)
-    player.transform = player.gameObject.transform
-    
-    ---@type UnityEngine.Rigidbody
     player.rb = player.gameObject:AddComponent(typeof(UE.Rigidbody))
 end
 
