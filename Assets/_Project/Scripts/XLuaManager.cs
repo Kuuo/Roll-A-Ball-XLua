@@ -5,10 +5,12 @@ using XLua;
 public class XLuaManager : MonoBehaviour
 {
     private LuaEnv _env;
-
-    private void Start()
+    
+    public void Init()
     {
         InitEnv();
+
+        _env?.DoString("require 'main'", "main");
 
         InitUpdater();
     }
@@ -16,8 +18,7 @@ public class XLuaManager : MonoBehaviour
     private void InitEnv()
     {
         _env = new LuaEnv();
-
-        _env.DoString("require 'main'", "main");
+        _env.AddLoader(AssetBundleManger.LuaModuleLoader);
     }
 
     private void InitUpdater()

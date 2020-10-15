@@ -12,7 +12,5 @@ function update(dt, udt)
 end
 
 function fixedUpdate(dt, udt)
-    h, v = inputMod.inputH, inputMod.inputV
-
-    playerMod.move(h, v)
+    playerMod.move(inputMod.inputH, inputMod.inputV)
 end
