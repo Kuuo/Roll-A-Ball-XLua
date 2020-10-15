@@ -2,15 +2,23 @@
 GO = UE.GameObject
 
 require 'inputMod'
-require 'playerMod'
+require 'gameControllerMod'
 
 local msg = "<b>Hello From Lua!</b>"
 CS.UnityEngine.Debug.Log(msg)
 
+gameControllerMod.init()
+
 function update(dt, udt)
     inputMod.update(dt, udt)
+    
+    gameControllerMod.update(dt)
 end
 
 function fixedUpdate(dt, udt)
-    playerMod.move(inputMod.inputH, inputMod.inputV)
+    
+    if not gameControllerMod.win() then
+        playerMod.move(inputMod.inputH, inputMod.inputV)
+    end
+    
 end

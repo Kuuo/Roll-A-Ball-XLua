@@ -1,0 +1,51 @@
+﻿uiMod = {
+    ---@type TMPro.TMP_Text
+    scoreText = nil,
+
+    ---@type UnityEngine.Canvas
+    winUI = nil
+}
+
+function uiMod.Init()
+    local ui_score_prefab = CS.AssetBundleManger.LoadGameObject('ui_score')
+
+    ---@type UnityEngine.GameObject
+    local ui_score = GO.Instantiate(ui_score_prefab)
+    uiMod.scoreText = ui_score.transform
+                              :Find('Panel/Score Text')
+                              :GetComponent(typeof(CS.TMPro.TMP_Text))
+    uiMod.scoreText:SetText(tostring(0))
+
+    local ui_win_prefab = CS.AssetBundleManger.LoadGameObject('ui_win_panel')
+
+    ---@type UnityEngine.GameObject
+    local ui_win = GO.Instantiate(ui_win_prefab)
+    uiMod.winUI = ui_win:GetComponent(typeof(UE.Canvas))
+    uiMod.winUI.enabled = false
+    
+    ---@type UnityEngine.UI.Button
+    local restartButton = ui_win.transform:Find('Panel/Restart Button')
+                                :GetComponent(typeof(UE.UI.Button))
+    
+    restartButton.onClick:AddListener(function()
+        local sceneManager = UE.SceneManagement.SceneManager
+        sceneManager.LoadScene(sceneManager.GetActiveScene().buildIndex)
+    end)
+end
+
+---@param newScore number
+function uiMod.UpdateScore(newScore)
+    if uiMod.scoreText == nil then
+        return
+    end
+
+    uiMod.scoreText:SetText(tostring(newScore))
+end
+
+function uiMod.ShowWinUI()
+    if uiMod.winUI == nil then
+        return
+    end
+
+    uiMod.winUI.enabled = true
+end

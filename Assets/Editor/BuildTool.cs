@@ -12,7 +12,7 @@ public static class BuildTool
         {
             Directory.CreateDirectory(assetBundleDirectory);
         }
-
+        
         BuildPipeline.BuildAssetBundles(assetBundleDirectory,
             BuildAssetBundleOptions.None,
             BuildTarget.StandaloneWindows);

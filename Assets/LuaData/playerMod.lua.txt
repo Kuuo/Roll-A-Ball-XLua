@@ -11,10 +11,13 @@
 
 --setmetatable(playerMod, { __index = _G })
 
-function init()
+local function createPlayer()
     local player = playerMod.player
 
     player.gameObject = GO.CreatePrimitive(UE.PrimitiveType.Sphere)
+    player.gameObject.name = '[Player]'
+    player.gameObject.tag = 'Player'
+    
     player.rb = player.gameObject:AddComponent(typeof(UE.Rigidbody))
 
     local matName = 'mat_player'
@@ -25,8 +28,21 @@ function init()
     renderer.material = mat
 end
 
+local function setCameraFollow()
+    local vcam = GO.Find('CM vcam1')
+    
+    ---@type Cinemachine.CinemachineVirtualCamera
+    local cvcam = vcam:GetComponent(typeof(CS.Cinemachine.CinemachineVirtualCamera))
+    
+    cvcam.Follow = playerMod.player.gameObject.transform
+end
+
 function playerMod.move(h, v)
     playerMod.player.rb:AddForce(UE.Vector3(h, 0, v) * playerMod.force)
 end
 
-init()
+function playerMod.init()
+    createPlayer()
+
+    setCameraFollow()
+end

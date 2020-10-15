@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 401098432
+CRC: 2815308028
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bc553ad03aba7af47a54fedb516e750e
+    Hash: 61de8b8935bbe354139627578105492e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -13,6 +13,8 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/LuaData/playerMod.lua.txt
+- Assets/LuaData/gameControllerMod.lua.txt
+- Assets/LuaData/uiMod.lua.txt
 - Assets/LuaData/inputMod.lua.txt
 - Assets/LuaData/main.lua.txt
 Dependencies: []

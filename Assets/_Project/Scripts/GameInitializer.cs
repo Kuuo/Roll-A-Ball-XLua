@@ -2,6 +2,10 @@
 
 public class GameInitializer : MonoBehaviour
 {
+#if UNITY_EDITOR
+    public bool useAbLua;
+#endif
+
     private void Start()
     {
         Init();
@@ -15,7 +19,10 @@ public class GameInitializer : MonoBehaviour
         {
             xLuaManager = gameObject.AddComponent<XLuaManager>();
         }
-        
+
+#if UNITY_EDITOR
+        xLuaManager.useAbLua = useAbLua;
+#endif
         xLuaManager.Init();
     }
 }
